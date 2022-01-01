@@ -1,3 +1,7 @@
+/*My solution was a bit different from the editorial. Instead of sorting by the last value in each cow-pair 
+(which was probably easier lol), I sorted each cow range by the amount of flexability they have (i.e given a
+pair of [a,b], the vector was sorted based on the absolute difference between both integers). */
+
 #include <iostream>
 #include <fstream>
 #include <vector>
