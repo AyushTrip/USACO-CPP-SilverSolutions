@@ -16,18 +16,9 @@ bool visited[5000] = {0};
 void dfs(int idx, int r){
   visited[idx] = true;
   for(pair<int, int> &video: adj[idx]){
-    //If NOT visited and its in relevence range 
-    //cout << video.first << " " << video.second << endl;
     if((!visited[video.first]) && (video.second >= r)){
       dfs(video.first, r); 
-    }
-    
-  }
-}
-
-void reset(){
-  for(int i=0; i<N; i++){
-    visited[i] = false; 
+    }  
   }
 }
 
@@ -53,20 +44,18 @@ int main(){
     adj[qi].push_back(make_pair(pi, ri));
   }
 
-
   for(int j=0; j<Q; j++){
     fin >> questions[j].first >> questions[j].second;
   }
 
   //Implement DFS
   for(int i=0; i<Q; i++){
-    reset(); 
-    k = questions[i].first;
-    v = questions[i].second;
-    dfs(v-1, k);
+    //Reset the array
+    for(int i=0; i<N; i++){
+      visited[i] = false; 
+    }
+    dfs(questions[i].second-1, questions[i].first);
     fout << count_true() << endl;
   }
-
-
   return 0; 
 }
